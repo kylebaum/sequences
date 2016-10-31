@@ -24,17 +24,22 @@ We’ll start by telling you that the sequence 2, 4, 8 obeys the rule:
 <p>
   Now it’s your turn. Enter a number sequence in the boxes below, and we’ll tell you whether it satisfies the rule or not. You can test as many sequences as you want.
 </p>
+
+<% if @all_numbers != nil %>
+<ul>
+    <% @all_numbers.each do |scrote| %>
+<li>
+<%= scrote.first_guess %>,
+<%= scrote.second_guess %>,
+<%= scrote.third_guess %>
+<%= scrote.outcome %>
+</li>
+<% end %>
+</ul>
+<% end %>
 <p>
   Enter a sequence:
 </p>
-<ul>
-<li><%= @first_guess %>,
-<%= @second_guess %>,
-<%= @third_guess %>
-<%= @game_result %>
-
-</li>
-</ul>
 <form action="/all_guesses">
   <label for="first">First number:</label>
   <input id="first" name="first" type="text" placeholder="The first number">
@@ -61,4 +66,4 @@ We’ll start by telling you that the sequence 2, 4, 8 obeys the rule:
 </form>
 
 <hr>
-<a href="a">Reset</a>
+<a href="/clear_guesses">Reset</a>
